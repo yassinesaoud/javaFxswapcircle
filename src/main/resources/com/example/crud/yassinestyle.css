@@ -1,0 +1,75 @@
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.nav-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.nav-button:pressed {
+    -fx-background-color: #e0e0e0;
+}
+
+.nav-button .graphic {
+    -fx-padding: 0 10 0 0;
+}
+
+.h1 {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.action-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+}
+
+.action-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.edit-button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5 10;
+    -fx-background-radius: 3;
+}
+
+.edit-button:hover {
+    -fx-background-color: #1976D2;
+}
+
+.delete-button {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5 10;
+    -fx-background-radius: 3;
+}
+
+.delete-button:hover {
+    -fx-background-color: #d32f2f;
+}
+
+.text-field, .text-area, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-padding: 5;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: #2196F3;
+}

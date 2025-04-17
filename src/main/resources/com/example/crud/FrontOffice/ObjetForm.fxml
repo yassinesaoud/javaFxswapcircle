@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.crud.FrontOffice.ObjetFormController"
+      styleClass="form-container" stylesheets="@../styles/frontoffice.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Image Section -->
+    <VBox spacing="10" styleClass="image-section">
+        <Label text="Image de l'objet" styleClass="form-label"/>
+        <ImageView fx:id="imagePreview" fitHeight="200" fitWidth="200" preserveRatio="true" 
+                   styleClass="image-preview"/>
+        <HBox spacing="10">
+            <Button fx:id="chooseImageButton" text="Choisir une image" onAction="#handleChooseImage" 
+                    styleClass="secondary-button"/>
+            <Button fx:id="removeImageButton" text="Supprimer l'image" onAction="#handleRemoveImage" 
+                    styleClass="danger-button"/>
+        </HBox>
+    </VBox>
+
+    <Label text="Nom de l'objet" styleClass="form-label"/>
+    <TextField fx:id="nomField" promptText="Entrez le nom de l'objet" styleClass="form-field"/>
+
+    <Label text="Description" styleClass="form-label"/>
+    <TextArea fx:id="descriptionField" promptText="Décrivez votre objet" wrapText="true" 
+              prefRowCount="3" styleClass="form-field"/>
+
+    <Label text="État" styleClass="form-label"/>
+    <ComboBox fx:id="etatComboBox" promptText="Sélectionnez l'état" styleClass="form-field"/>
+
+    <Label text="Catégorie" styleClass="form-label"/>
+    <ComboBox fx:id="categorieComboBox" promptText="Sélectionnez une catégorie" styleClass="form-field"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel" styleClass="cancel-button"/>
+        <Button fx:id="saveButton" text="Enregistrer" onAction="#handleSave" styleClass="save-button"/>
+    </HBox>
+</VBox> 

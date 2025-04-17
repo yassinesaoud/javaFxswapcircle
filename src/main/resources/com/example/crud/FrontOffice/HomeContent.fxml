@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox alignment="TOP_CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.example.crud.FrontOffice.HomeContentController"
+      stylesheets="@../styles/frontoffice.css">
+
+    <!-- Welcome Section -->
+    <VBox styleClass="welcome-section" alignment="CENTER" spacing="20">
+        <Label text="Bienvenue sur SwapCircle" styleClass="welcome-title">
+            <font>
+                <Font size="40"/>
+            </font>
+        </Label>
+        <Label text="La plateforme d'échange d'objets qui donne une seconde vie à vos biens" 
+               styleClass="welcome-subtitle" wrapText="true" alignment="CENTER">
+            <font>
+                <Font size="20"/>
+            </font>
+        </Label>
+        <Button text="Commencer à Échanger" styleClass="cta-button" onAction="#handleStartSwapping"/>
+    </VBox>
+
+    <!-- Features Section -->
+    <HBox styleClass="features-section" spacing="30" alignment="CENTER">
+        <!-- Feature 1 -->
+        <VBox styleClass="feature-card" alignment="CENTER" spacing="15">
+            <ImageView fitHeight="64" fitWidth="64">
+                <Image url="@../icons/echange.png"/>
+            </ImageView>
+            <Label text="Échangez Facilement" styleClass="feature-title"/>
+            <Label text="Trouvez des objets qui vous intéressent et proposez vos échanges en quelques clics" 
+                   styleClass="feature-description" wrapText="true"/>
+        </VBox>
+
+        <!-- Feature 2 -->
+        <VBox styleClass="feature-card" alignment="CENTER" spacing="15">
+            <ImageView fitHeight="64" fitWidth="64">
+                <Image url="@../icons/community.png"/>
+            </ImageView>
+            <Label text="Communauté Active" styleClass="feature-title"/>
+            <Label text="Rejoignez une communauté dynamique de personnes partageant les mêmes valeurs" 
+                   styleClass="feature-description" wrapText="true"/>
+        </VBox>
+
+        <!-- Feature 3 -->
+        <VBox styleClass="feature-card" alignment="CENTER" spacing="15">
+            <ImageView fitHeight="64" fitWidth="64">
+                <Image url="@../icons/eco.png"/>
+            </ImageView>
+            <Label text="Écologique" styleClass="feature-title"/>
+            <Label text="Contribuez à la réduction des déchets en donnant une seconde vie aux objets" 
+                   styleClass="feature-description" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox> 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="200.0" prefWidth="190.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane prefHeight="130.0" prefWidth="190.0" style="-fx-background-color: #FDDB87; -fx-background-radius: 10;">
+            <children>
+                <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="52.0" layoutY="-9.0">
+                    <Image url="@../icons/clientaccount.png"/>
+                </ImageView>
+            </children>
+            <padding>
+                <Insets left="10.0"/>
+            </padding>
+        </Pane>
+        <Label fx:id="clientName" text="Client Name" styleClass="client-name">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+            <padding>
+                <Insets left="10.0" top="10.0"/>
+            </padding>
+        </Label>
+        <Label fx:id="clientEmail" text="client@email.com" styleClass="client-email" textFill="#00000093">
+            <font>
+                <Font size="13.0"/>
+            </font>
+            <padding>
+                <Insets left="10.0" top="5.0"/>
+            </padding>
+        </Label>
+    </children>
+</VBox> 

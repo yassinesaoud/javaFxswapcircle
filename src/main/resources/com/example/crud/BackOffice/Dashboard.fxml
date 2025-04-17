@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="30.0" styleClass="primary-color" stylesheets="@../yassinestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crud.BackOffice.DashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <!-- Top Bar -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="white-background">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+            <children>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" styleClass="search-container">
+                    <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                            <Image url="@../icons/recherche.png"/>
+                        </ImageView>
+                        <TextField fx:id="searchField" prefHeight="25.0" prefWidth="204.0" promptText="Search" styleClass="transparent"/>
+                    </children>
+                </HBox>
+                <ImageView fitHeight="30.0" fitWidth="30.0">
+                    <Image url="@../icons/bellalertgif.gif"/>
+                </ImageView>
+                <HBox alignment="CENTER" spacing="5.0">
+                    <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <Image url="@../icons/profile.png"/>
+                    </ImageView>
+                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                        <Image url="@../icons/arrowdown.png"/>
+                    </ImageView>
+                </HBox>
+            </children>
+        </HBox>
+
+        <!-- Dashboard Content -->
+        <VBox spacing="30.0">
+            <!-- Stats Cards -->
+            <HBox spacing="20.0">
+                <!-- Clients Card -->
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <Label text="CLIENTS" styleClass="card-title">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                            </Label>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <ImageView fitHeight="35.0" fitWidth="35.0">
+                                <Image url="@../icons/users.png"/>
+                            </ImageView>
+                        </HBox>
+                        <Label fx:id="clientsCount" text="123K" styleClass="stat-number">
+                            <font>
+                                <Font name="System Bold" size="30.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <!-- Objets Card -->
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <Label text="OBJETS" styleClass="card-title">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                            </Label>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <ImageView fitHeight="35.0" fitWidth="35.0">
+                                <Image url="@../icons/objets.gif"/>
+                            </ImageView>
+                        </HBox>
+                        <Label fx:id="objetsCount" text="1K" styleClass="stat-number">
+                            <font>
+                                <Font name="System Bold" size="30.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <!-- Echanges Card -->
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <Label text="ECHANGES" styleClass="card-title">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                            </Label>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <ImageView fitHeight="35.0" fitWidth="35.0">
+                                <Image url="@../icons/exchange.png"/>
+                            </ImageView>
+                        </HBox>
+                        <Label fx:id="echangesCount" text="340" styleClass="stat-number">
+                            <font>
+                                <Font name="System Bold" size="30.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <!-- Tickets Card -->
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <Label text="TICKETS" styleClass="card-title">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                            </Label>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <ImageView fitHeight="35.0" fitWidth="35.0">
+                                <Image url="@../icons/tickets.png"/>
+                            </ImageView>
+                        </HBox>
+                        <Label fx:id="ticketsCount" text="200" styleClass="stat-number">
+                            <font>
+                                <Font name="System Bold" size="30.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </HBox>
+
+            <!-- Recent Clients Section -->
+            <VBox spacing="20.0">
+                <Label text="Recent Clients" styleClass="section-title">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+                <HBox fx:id="clientsContainer" spacing="20.0" styleClass="card">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </padding>
+                </HBox>
+            </VBox>
+
+            <!-- Statistics Section -->
+            <HBox spacing="20.0">
+                <!-- Invoices Flow -->
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                    <children>
+                        <Label text="Invoices Flow" styleClass="section-title">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                        <VBox spacing="10.0">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Paid" prefWidth="100"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="3,323" styleClass="stat-value"/>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Unpaid" prefWidth="100"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="1,203" styleClass="stat-value"/>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Overdue" prefWidth="100"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="900" styleClass="stat-value"/>
+                            </HBox>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Objects Stats -->
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                    <children>
+                        <Label text="Objects Statistics" styleClass="section-title">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                        <VBox spacing="10.0">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Total" prefWidth="100"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="1,000" styleClass="stat-value"/>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Exchanged" prefWidth="100"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="450" styleClass="stat-value"/>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Recycled" prefWidth="100"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="253" styleClass="stat-value"/>
+                            </HBox>
+                        </VBox>
+                    </children>
+                </VBox>
+            </HBox>
+        </VBox>
+    </children>
+</VBox> 

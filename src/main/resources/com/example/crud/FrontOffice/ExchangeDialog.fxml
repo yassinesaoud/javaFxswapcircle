@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox spacing="15" styleClass="exchange-dialog" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.crud.FrontOffice.ExchangeDialogController">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Selected Object Info -->
+    <VBox styleClass="selected-object-info" spacing="10">
+        <Label text="Objet sélectionné:" styleClass="section-label"/>
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <ImageView fx:id="selectedObjectImage" fitWidth="120" fitHeight="120" 
+                      preserveRatio="true" styleClass="object-image"/>
+            <VBox spacing="5">
+                <Text fx:id="selectedObjectText" styleClass="selected-object-name"/>
+                <Text fx:id="selectedObjectDescription" styleClass="selected-object-description" 
+                      wrappingWidth="300"/>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Exchange Form -->
+    <VBox spacing="10">
+        <Label text="Nom de l'échange" styleClass="form-label"/>
+        <TextField fx:id="nameField" promptText="Donnez un nom à votre proposition d'échange"/>
+
+        <Label text="Message" styleClass="form-label"/>
+        <TextArea fx:id="messageField" promptText="Décrivez votre proposition d'échange..." 
+                  wrapText="true" prefRowCount="4"/>
+
+        <Label text="Image de l'objet" styleClass="form-label"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button fx:id="chooseImageButton" text="Choisir une image" onAction="#handleChooseImage"/>
+            <Label fx:id="imageNameLabel" styleClass="image-name-label"/>
+        </HBox>
+        <ImageView fx:id="imagePreview" fitWidth="200" fitHeight="200" 
+                   preserveRatio="true" styleClass="image-preview"/>
+    </VBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel" 
+                styleClass="cancel-button"/>
+        <Button fx:id="submitButton" text="Proposer l'échange" onAction="#handleSubmit" 
+                styleClass="submit-button" defaultButton="true"/>
+    </HBox>
+
+</VBox> 

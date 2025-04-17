@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.crud.BackOffice.EchangeFormController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Objet"/>
+    <ComboBox fx:id="objetComboBox" maxWidth="Infinity"/>
+
+    <Label text="Nom de l'échange"/>
+    <TextField fx:id="nameField"/>
+
+    <Label text="Message"/>
+    <TextArea fx:id="messageField" wrapText="true"/>
+
+    <Label text="Statut"/>
+    <ComboBox fx:id="statutComboBox" maxWidth="Infinity"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel"/>
+        <Button fx:id="saveButton" text="Enregistrer" onAction="#handleSave" defaultButton="true"/>
+    </HBox>
+</VBox> 
