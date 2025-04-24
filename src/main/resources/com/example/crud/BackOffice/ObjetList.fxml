@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Rectangle?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-      prefHeight="600.0" prefWidth="1000.0" spacing="20.0" stylesheets="@../yassinestyle.css"
-      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="com.example.crud.BackOffice.ObjetListController">
-    
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-
-    <HBox alignment="CENTER_LEFT" spacing="20.0">
-        <Label text="Liste des Objets" styleClass="h1">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </Label>
-        <Button fx:id="addButton" text="Ajouter" styleClass="action-button" onAction="#handleAdd"/>
-    </HBox>
-
-    <TableView fx:id="objetTable" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="imageColumn" prefWidth="100.0" text="Image" />
-            <TableColumn fx:id="nomColumn" prefWidth="150.0" text="Nom" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="200.0" text="Description" />
-            <TableColumn fx:id="etatColumn" prefWidth="100.0" text="État" />
-            <TableColumn fx:id="dateAjoutColumn" prefWidth="150.0" text="Date d'ajout" />
-            <TableColumn fx:id="categorieColumn" prefWidth="100.0" text="Catégorie" />
-            <TableColumn fx:id="actionsColumn" prefWidth="150.0" text="Actions" />
-        </columns>
-    </TableView>
-</VBox> 
+<?import javafx.scene.control.ScrollPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="800.0" prefWidth="1200.0" stylesheets="@../yassinestyle.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.crud.BackOffice.ObjetListController" styleClass="main-container">
+    <top>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="30.0" right="30.0" top="30.0" />
+            </padding>
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="Catalogue d'Objets" styleClass="dashboard-title">
+                    <font>
+                        <Font name="System Bold" size="32.0" />
+                    </font>
+                </Label>
+                <Label fx:id="totalItemsLabel" text="0 objets au total" styleClass="stats-label" HBox.hgrow="ALWAYS" />
+                <Button fx:id="addButton" text="+ Ajouter un Objet" styleClass="action-button" onAction="#handleAdd" />
+            </HBox>
+            <!-- Search and Filter Section -->
+            <HBox spacing="20.0" alignment="CENTER_LEFT" styleClass="search-filter-container">
+                <TextField fx:id="searchField" promptText="Rechercher par nom..." prefWidth="300.0" styleClass="modern-input" onKeyReleased="#handleSearch" />
+                <ComboBox fx:id="categoryFilter" promptText="Trier par Catégorie" prefWidth="200.0" styleClass="modern-combo" onAction="#handleFilter" />
+                <ComboBox fx:id="stateFilter" promptText="Trier par État" prefWidth="200.0" styleClass="modern-combo" onAction="#handleFilter" />
+                <Button text="Filtrer" styleClass="filter-button" onAction="#handleFilter" />
+                <Button text="Réinitialiser" styleClass="reset-button" onAction="#resetFilters" />
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <StackPane fx:id="contentContainer">
+            <!-- Blog View -->
+            <ScrollPane fx:id="blogScrollPane" fitToWidth="true" styleClass="transparent-scroll-pane">
+                <VBox fx:id="blogContainer" spacing="30.0" styleClass="blog-container">
+                    <padding>
+                        <Insets top="20.0" right="30.0" bottom="30.0" left="30.0" />
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </StackPane>
+    </center>
+    <bottom>
+        <VBox alignment="CENTER" spacing="15.0">
+            <padding>
+                <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+            </padding>
+            <!-- Pagination -->
+            <HBox alignment="CENTER" spacing="20.0" styleClass="pagination-container">
+                <Button fx:id="firstPageButton" text="«" styleClass="pagination-button" onAction="#goToFirstPage" />
+                <Button fx:id="prevPageButton" text="‹" styleClass="pagination-button" onAction="#goToPrevPage" />
+                <HBox fx:id="pageButtonsContainer" alignment="CENTER" spacing="10.0" />
+                <Button fx:id="nextPageButton" text="›" styleClass="pagination-button" onAction="#goToNextPage" />
+                <Button fx:id="lastPageButton" text="»" styleClass="pagination-button" onAction="#goToLastPage" />
+            </HBox>
+            <Label fx:id="paginationLabel" text="Page 1 sur 1" styleClass="pagination-label" />
+        </VBox>
+    </bottom>
+</BorderPane>

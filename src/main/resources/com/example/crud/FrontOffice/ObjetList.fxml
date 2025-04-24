@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.ImageView?>
 
-<VBox spacing="20" styleClass="content-area" xmlns:fx="http://javafx.com/fxml" 
+<VBox spacing="20" styleClass="content-area" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.crud.FrontOffice.ObjetListController"
       stylesheets="@../styles/frontoffice.css">
     <!-- Search and Filter Section -->
@@ -31,4 +31,4 @@
 
     <!-- Loading Indicator -->
     <ProgressIndicator fx:id="loadingIndicator" visible="false"/>
-</VBox> 
+</VBox>

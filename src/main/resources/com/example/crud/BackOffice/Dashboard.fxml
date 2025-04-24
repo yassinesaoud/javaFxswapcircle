@@ -111,7 +111,7 @@
                             </Label>
                             <Region HBox.hgrow="ALWAYS"/>
                             <ImageView fitHeight="35.0" fitWidth="35.0">
-                                <Image url="@../icons/exchange.png"/>
+                                <Image url="@../icons/echange.png"/>
                             </ImageView>
                         </HBox>
                         <Label fx:id="echangesCount" text="340" styleClass="stat-number">

@@ -1,6 +1,7 @@
 package com.example.crud.BackOffice;
 
 import com.example.crud.utils.NavigationUtil;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
@@ -37,5 +38,15 @@ public class BackOfficeController implements Initializable {
     @FXML
     private void handleFrontOffice() {
         NavigationUtil.navigateTo("/com/example/crud/FrontOffice/FrontOffice.fxml");
+    }
+
+    public void handleReports(ActionEvent actionEvent) {
+    }
+
+    public void handleSettings(ActionEvent actionEvent) {
+    }
+
+    public void handleLogout(ActionEvent actionEvent) {
+
     }
 } 

@@ -3,6 +3,7 @@ package com.example.crud.FrontOffice;
 import com.example.crud.dao.ObjetDAO;
 import com.example.crud.model.Objet;
 import com.example.crud.utils.NavigationUtil;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
@@ -29,16 +30,16 @@ import java.io.File;
 public class ObjetListController implements Initializable {
     @FXML
     private TextField searchField;
-    
+
     @FXML
     private ComboBox<String> categoryFilter;
-    
+
     @FXML
     private ComboBox<String> stateFilter;
-    
+
     @FXML
     private FlowPane objectsGrid;
-    
+
     @FXML
     private ProgressIndicator loadingIndicator;
 
@@ -49,12 +50,12 @@ public class ObjetListController implements Initializable {
         // Initialize filters
         categoryFilter.getItems().addAll("Toutes les catégories", "Électronique", "Vêtements", "Livres", "Sports", "Maison");
         stateFilter.getItems().addAll("Tous les états", "Neuf", "Très bon", "Bon", "Acceptable");
-        
+
         // Add listeners for search and filters
         searchField.textProperty().addListener((obs, oldText, newText) -> filterObjects());
         categoryFilter.valueProperty().addListener((obs, oldVal, newVal) -> filterObjects());
         stateFilter.valueProperty().addListener((obs, oldVal, newVal) -> filterObjects());
-        
+
         // Load objects
         loadObjects();
     }
@@ -62,7 +63,7 @@ public class ObjetListController implements Initializable {
     private void loadObjects() {
         loadingIndicator.setVisible(true);
         objectsGrid.getChildren().clear();
-        
+
         try {
             for (Objet objet : objetDAO.getAllObjets()) {
                 objectsGrid.getChildren().add(createObjectCard(objet));
@@ -80,7 +81,7 @@ public class ObjetListController implements Initializable {
         card.getStyleClass().add("object-card");
         card.setAlignment(Pos.CENTER);
         card.setPrefWidth(250);
-        
+
         // Image
         ImageView imageView = new ImageView();
         imageView.setFitWidth(200);
@@ -104,49 +105,49 @@ public class ObjetListController implements Initializable {
             e.printStackTrace();
             setDefaultImage(imageView);
         }
-        
+
         // Object details
         Label nameLabel = new Label(objet.getNom());
         nameLabel.getStyleClass().add("object-name");
-        
+
         Text descriptionText = new Text(objet.getDescription());
         descriptionText.getStyleClass().add("object-description");
         descriptionText.setWrappingWidth(200);
-        
+
         Label categoryLabel = new Label(objet.getCategorie());
         categoryLabel.getStyleClass().add("object-category");
-        
+
         Label stateLabel = new Label(objet.getEtat());
         stateLabel.getStyleClass().add("object-state");
-        
+
         // Buttons in separate VBox for vertical alignment
         VBox buttonBox = new VBox(5);
         buttonBox.setAlignment(Pos.CENTER);
-        
+
         Button exchangeButton = new Button("Proposer un échange");
         exchangeButton.getStyleClass().add("exchange-button");
         exchangeButton.setMaxWidth(Double.MAX_VALUE);
         exchangeButton.setOnAction(e -> handleExchange(objet));
-        
+
         Button editButton = new Button("Modifier");
         editButton.getStyleClass().add("edit-button");
         editButton.setMaxWidth(Double.MAX_VALUE);
         editButton.setOnAction(e -> handleEdit(objet));
-        
+
         Button deleteButton = new Button("Supprimer");
         deleteButton.getStyleClass().add("delete-button");
         deleteButton.setMaxWidth(Double.MAX_VALUE);
         deleteButton.setOnAction(e -> handleDelete(objet));
-        
+
         buttonBox.getChildren().addAll(exchangeButton, editButton, deleteButton);
-        
+
         card.getChildren().addAll(
-            imageView, 
-            nameLabel, 
-            descriptionText, 
-            categoryLabel, 
-            stateLabel, 
-            buttonBox
+                imageView,
+                nameLabel,
+                descriptionText,
+                categoryLabel,
+                stateLabel,
+                buttonBox
         );
         return card;
     }
@@ -166,7 +167,7 @@ public class ObjetListController implements Initializable {
         String searchText = searchField.getText().toLowerCase();
         String category = categoryFilter.getValue();
         String state = stateFilter.getValue();
-        
+
         try {
             objectsGrid.getChildren().clear();
             for (Objet objet : objetDAO.getAllObjets()) {
@@ -181,18 +182,18 @@ public class ObjetListController implements Initializable {
     }
 
     private boolean matchesFilters(Objet objet, String searchText, String category, String state) {
-        boolean matchesSearch = searchText.isEmpty() || 
-                              objet.getNom().toLowerCase().contains(searchText) ||
-                              objet.getDescription().toLowerCase().contains(searchText);
-                              
-        boolean matchesCategory = category == null || 
-                                category.equals("Toutes les catégories") || 
-                                category.equals(objet.getCategorie());
-                                
-        boolean matchesState = state == null || 
-                             state.equals("Tous les états") || 
-                             state.equals(objet.getEtat());
-                             
+        boolean matchesSearch = searchText.isEmpty() ||
+                objet.getNom().toLowerCase().contains(searchText) ||
+                objet.getDescription().toLowerCase().contains(searchText);
+
+        boolean matchesCategory = category == null ||
+                category.equals("Toutes les catégories") ||
+                category.equals(objet.getCategorie());
+
+        boolean matchesState = state == null ||
+                state.equals("Tous les états") ||
+                state.equals(objet.getEtat());
+
         return matchesSearch && matchesCategory && matchesState;
     }
 
@@ -200,10 +201,10 @@ public class ObjetListController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/crud/FrontOffice/ExchangeDialog.fxml"));
             Parent root = loader.load();
-            
+
             ExchangeDialogController controller = loader.getController();
             controller.setSelectedObject(objet);
-            
+
             // Since exchange is a dialog, we keep it as a new window
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Proposer un échange");
@@ -220,12 +221,12 @@ public class ObjetListController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/crud/FrontOffice/ObjetForm.fxml"));
             Parent root = loader.load();
-            
+
             ObjetFormController controller = loader.getController();
             controller.setObjet(objet);
             controller.setEditMode(true);
             controller.setOnSaveCallback(this::loadObjects);
-            
+
             Scene currentScene = objectsGrid.getScene();
             currentScene.setRoot(root);
         } catch (IOException e) {
@@ -258,4 +259,4 @@ public class ObjetListController implements Initializable {
         alert.setContentText(content);
         alert.showAndWait();
     }
-} 
+}
